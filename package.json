@@ -1,0 +1,19 @@
+{
+  "name": "ai_img_gen_app_backend",
+  "version": "1.0.0",
+  "description": "what it says",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marberrym/AI_img_gen_app_backend.git"
+  },
+  "author": "Matthew Marberry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marberrym/AI_img_gen_app_backend/issues"
+  },
+  "homepage": "https://github.com/marberrym/AI_img_gen_app_backend#readme"
+}
