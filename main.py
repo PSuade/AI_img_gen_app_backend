@@ -9,7 +9,7 @@ CORS(app)
 def hello_world():
     return "Hello, World!"
 
-@app.route("/sign-up", methods=['GET', 'POST'])
+@app.route("/sign-up", methods=['POST'])
 @cross_origin()
 def sign_up():
     json = request.json
