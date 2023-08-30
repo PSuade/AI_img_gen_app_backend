@@ -1,0 +1,7 @@
+###### Requirements without Version Specifiers ######
+flask 
+flask_cors
+flask_sqlalchemy
+sqlalchemy
+psycopg2
+psycopg2-binary
