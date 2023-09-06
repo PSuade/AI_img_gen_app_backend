@@ -4,24 +4,14 @@ from flask_cors import CORS, cross_origin
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 import psycopg2
-from configparser import ConfigParser
+
+import get_db_info
+from models.User import User;
 
 app = Flask(__name__)
 CORS(app)
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-
-def get_db_info(filename,section):
-    parser=ConfigParser()
-    parser.read([filename])
-
-    db_info={}
-    if parser.has_section(section):
-         key_val_tuple = parser.items(section) 
-         for item in key_val_tuple:
-             db_info[item[0]]=item[1]
-
-    return db_info
 
 @app.route('/')
 def get_index_data():
@@ -34,14 +24,8 @@ def sign_up():
     print(json);
 
     try:
-        db_params = get_db_info('database.ini', 'postgresql')
-        conn = psycopg2.connect(**db_params);
-        # create a cursor
-        cur = conn.cursor()
-        cur.execute("INSERT INTO users (id, first_name, last_name, email, password) VALUES (%s, %s, %s, %s, %s)", (2, json["firstName"], json["lastName"], json["email"], json["password"])) 
-        conn.commit()
-        cur.close()
-        conn.close()
+        user = User(json["firstName"], json["lastName"], json["email"], json["password"])
+        user.save()
 
         return {
             "status": 200
@@ -57,4 +41,5 @@ def sign_up():
         # Insert into data base
         # Return a status code
     
+
     
