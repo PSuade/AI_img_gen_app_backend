@@ -20,3 +20,17 @@ class User:
         conn.commit()
         cur.close()
         conn.close()
+
+    @staticmethod
+    def get_user_by_email(email):
+        db_params = get_db_info.get_db_params()        
+        conn = psycopg2.connect(**db_params);
+        cur = conn.cursor()
+        cur.execute("""
+                SELECT * FROM users WHERE email = %s; 
+                
+            """, (email,)) 
+        user = cur.fetchone()
+        cur.close()
+        conn.close()
+        return user
